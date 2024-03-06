@@ -66,7 +66,7 @@ contract MoneyManagement is BaseUserManagement {
    }
 }
 
-contract LoanManagement {
+contract LoanManagement is Moneymanagement {
     address public admin;
     mapping(address => bool) public users;
     uint256 public interestRate;
