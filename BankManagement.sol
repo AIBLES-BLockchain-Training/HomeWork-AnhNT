@@ -65,19 +65,3 @@ contract MoneyManagement is BaseUserManagement {
        payable(msg.sender).transfer(amount);
    }
 }
-
-contract LoanSystem is MoneyManagement {
-    mapping(address => uint256) public loans;
-
-    function borrow(address _borrower, uint256 _amount) public onlyManager {
-        require(balances[_borrower] >= _amount, "Insufficient funds for borrowing");
-        loans[_borrower] += _amount;
-        balances[_borrower] -= _amount;
-    }
-
-    function repay(address _borrower, uint256 _amount) public onlyManager {
-        require(loans[_borrower] >= _amount, "Cannot repay more than borrowed");
-        loans[_borrower] -= _amount;
-        balances[_borrower] += _amount;
-    }
-}
