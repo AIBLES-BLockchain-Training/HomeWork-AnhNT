@@ -87,7 +87,7 @@ contract LoanSystem is MoneyManagement {
     }
 
     // Hàm cho vay tiền
-    function lend(address _borrower, uint256 _amount, uint256 _duration) public onlyAdmin {
+    function lend(address _borrower, uint256 _amount, uint256 _duration) public onlyManager {
         require(isUser(_borrower), "Borrower is not a user");
         require(balances[_borrower] >= _amount, "Borrower does not have enough balance");
         
